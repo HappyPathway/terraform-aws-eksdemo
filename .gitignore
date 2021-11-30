@@ -33,6 +33,6 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-ssh*
+ssh_key
 
 .terraform.lock.hcl 
