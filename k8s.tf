@@ -4,7 +4,7 @@ resource "kubernetes_service" "eks" {
   }
   spec {
     selector = {
-      app = kubernetes_pod.eksdemo.metadata.0.labels.app
+      app = kubernetes_pod.eks.metadata.0.labels.app
     }
     session_affinity = "ClientIP"
     port {

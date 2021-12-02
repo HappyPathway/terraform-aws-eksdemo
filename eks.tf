@@ -1,6 +1,6 @@
 resource "aws_eks_cluster" "eks" {
   name     = local.app_name
-  role_arn = aws_iam_role.eksdemo.arn
+  role_arn = aws_iam_role.eks.arn
 
   vpc_config {
     subnet_ids = module.private-subnet.*.subnet_id
