@@ -26,7 +26,7 @@ resource "kubernetes_pod" "eks" {
 
   spec {
     container {
-      image = "nginx:1.7.9"
+      image = var.image
       name  = local.app_name
     }
   }

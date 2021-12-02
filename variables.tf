@@ -31,3 +31,7 @@ variable "availability_zones" {
 variable "env" {
   default = "eksdemo"
 }
+
+variable "image" {
+  default = "nginx:1.7.9"
+}
