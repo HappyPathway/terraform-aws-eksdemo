@@ -1,5 +1,5 @@
-resource "aws_iam_role" "eksdemo" {
-  name = "eks-cluster-eksdemo"
+resource "aws_iam_role" "eks" {
+  name = "eks-cluster-${local.app_name}"
 
   assume_role_policy = <<POLICY
 {
@@ -17,14 +17,14 @@ resource "aws_iam_role" "eksdemo" {
 POLICY
 }
 
-resource "aws_iam_role_policy_attachment" "eksdemo-AmazonEKSClusterPolicy" {
+resource "aws_iam_role_policy_attachment" "eks-AmazonEKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role       = aws_iam_role.eksdemo.name
+  role       = aws_iam_role.eks.name
 }
 
 # Optionally, enable Security Groups for Pods
 # Reference: https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
-resource "aws_iam_role_policy_attachment" "eksdemo-AmazonEKSVPCResourceController" {
+resource "aws_iam_role_policy_attachment" "eks-AmazonEKSVPCResourceController" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
-  role       = aws_iam_role.eksdemo.name
+  role       = aws_iam_role.eks.name
 }

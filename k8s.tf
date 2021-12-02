@@ -1,6 +1,6 @@
-resource "kubernetes_service" "eksdemo" {
+resource "kubernetes_service" "eks" {
   metadata {
-    name = "terraform-eksdemo"
+    name = local.app_name
   }
   spec {
     selector = {
@@ -16,18 +16,18 @@ resource "kubernetes_service" "eksdemo" {
   }
 }
 
-resource "kubernetes_pod" "eksdemo" {
+resource "kubernetes_pod" "eks" {
   metadata {
-    name = "terraform-eksdemo"
+    name = local.app_name
     labels = {
-      app = "MyApp"
+      app = local.app_name
     }
   }
 
   spec {
     container {
       image = "nginx:1.7.9"
-      name  = "eksdemo"
+      name  = local.app_name
     }
   }
 }
