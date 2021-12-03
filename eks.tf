@@ -1,3 +1,7 @@
+data "aws_subnet" "selected" {
+  id = element(module.public-subnet.*.subnet_id, 0)
+}
+
 resource "aws_eks_cluster" "eks" {
   name     = local.app_name
   role_arn = aws_iam_role.air.arn
@@ -12,4 +16,8 @@ resource "aws_eks_cluster" "eks" {
     aws_iam_role_policy_attachment.eks-AmazonEKSClusterPolicy,
     aws_iam_role_policy_attachment.eks-AmazonEKSVPCResourceController,
   ]
+
+  kubernetes_network_config {
+    service_ipv4_cidr = data.aws_subnet.selected.cidr_block
+  }
 }
