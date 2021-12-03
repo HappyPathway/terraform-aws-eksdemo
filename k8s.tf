@@ -20,7 +20,6 @@ resource "kubernetes_service" "eks" {
 
   timeouts {
     create = "60m"
-    delete = "2h"
   }
 }
 
@@ -44,6 +43,5 @@ resource "kubernetes_pod" "eks" {
 
   timeouts {
     create = "60m"
-    delete = "2h"
   }
 }
