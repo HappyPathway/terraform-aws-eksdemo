@@ -1,4 +1,7 @@
 resource "kubernetes_service" "eks" {
+  depends_on = [
+    kubernetes_pod.eks
+  ]
   metadata {
     name = local.app_name
   }
@@ -17,6 +20,9 @@ resource "kubernetes_service" "eks" {
 }
 
 resource "kubernetes_pod" "eks" {
+  depends_on = [
+    aws_security_group_rule.sec
+  ]
   metadata {
     name = local.app_name
     labels = {
