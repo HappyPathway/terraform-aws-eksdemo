@@ -1,9 +1,9 @@
 resource "aws_elasticache_cluster" "el_cl" {
   cluster_id           = local.app_name
   engine               = "redis"
-  node_type            = "cache.m4.large"
-  num_cache_nodes      = 1
-  parameter_group_name = "default.redis3.2"
-  engine_version       = "3.2.10"
-  port                 = 6379
+  node_type            = var.elasticache_cluster_node_type
+  num_cache_nodes      = var.elasticache_cluster_num_cache_nodes
+  parameter_group_name = var.elasticache_cluster_parameter_group_name
+  engine_version       = var.elasticache_cluster_engine_version
+  port                 = var.elasticache_cluster_engine_port
 }

@@ -35,3 +35,23 @@ variable "env" {
 variable "image" {
   default = "nginx:1.7.9"
 }
+
+variable "elasticache_cluster_node_type" {
+  default = "cache.m4.large"
+}
+
+variable "elasticache_cluster_num_cache_nodes" {
+  default = 1
+}
+
+variable "elasticache_cluster_parameter_group_name" {
+  default = "default.redis3.2"
+}
+
+variable "elasticache_cluster_engine_version" {
+  default = "3.2.10"
+}
+
+variable "elasticache_cluster_engine_port" {
+  default = 6379
+}

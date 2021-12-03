@@ -1,4 +1,4 @@
-resource "aws_iam_role" "eks" {
+resource "aws_iam_role" "air" {
   name = "eks-cluster-${local.app_name}"
 
   assume_role_policy = <<POLICY
