@@ -1,6 +1,6 @@
 module "bastion" {
   source           = "app.terraform.io/roknsound/bastion/aws"
-  version          = "1.0.7"
+  version          = "~> 1.0"
   admin_sg         = aws_eks_cluster.eks.vpc_config[0].cluster_security_group_id
   key_name         = var.key_name
   network_name     = var.network_name
