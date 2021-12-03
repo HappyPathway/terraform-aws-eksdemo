@@ -17,6 +17,11 @@ resource "kubernetes_service" "eks" {
 
     type = "LoadBalancer"
   }
+
+  timeouts {
+    create = "60m"
+    delete = "2h"
+  }
 }
 
 resource "kubernetes_pod" "eks" {
@@ -35,5 +40,10 @@ resource "kubernetes_pod" "eks" {
       image = var.image
       name  = local.app_name
     }
+  }
+
+  timeouts {
+    create = "60m"
+    delete = "2h"
   }
 }
