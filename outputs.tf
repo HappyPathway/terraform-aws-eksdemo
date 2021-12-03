@@ -10,3 +10,7 @@ output "kubeconfig-certificate-authority-data" {
 output "vpc_config" {
   value = aws_eks_cluster.eks.vpc_config
 }
+
+output bastion {
+  value = module.bastion.bastion_host
+}
