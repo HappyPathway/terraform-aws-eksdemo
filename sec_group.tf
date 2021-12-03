@@ -1,7 +1,4 @@
-# aws_eks_cluster.eks.vpc_config.cluster-security-group-id
-locals {
-  vpc_config = aws_eks_cluster.eks.vpc_config[0]
-}
+
 resource "aws_security_group_rule" "sec" {
   type        = "ingress"
   from_port   = 443
@@ -9,5 +6,5 @@ resource "aws_security_group_rule" "sec" {
   protocol    = "tcp"
   cidr_blocks = data.tfe_ip_ranges.addresses.api
   # ipv6_cidr_blocks  = [aws_vpc.example.ipv6_cidr_block]
-  security_group_id = lookup(local.vpc_config, "cluster-security-group-id")
+  security_group_id = aws_eks_cluster.eks.vpc_config[0].cluster_security_group_id
 }
